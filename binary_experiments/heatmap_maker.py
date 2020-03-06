@@ -6,7 +6,8 @@ import numpy as np
 
 
 base_dir = '/camp/home/warnert/working/Recordings/binary_pulses/200228/2020-02-28_16-37-36'
-rec = br.Binary_recording(base_dir, 32, base_dir+'/2020-02-28trial_name_dorsal.txt')
+trialbank_loc = '/camp/home/warnert/working/Recordings/binary_pulses/200228/2020-02-28trial_name_dorsal.txt'
+rec = br.Binary_recording(base_dir, 32, base_dir+trialbank_loc)
 
 rec.set()
 num_to_chem = ['IA', 'EB', 'EA', 'ET']
