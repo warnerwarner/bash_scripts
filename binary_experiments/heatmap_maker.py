@@ -2,7 +2,7 @@ import sys
 sys.path.append('/camp/home/warnert/neurolytics')
 import binary_recording as br
 import matplotlib.pyplot as plt
-import np
+import numpy as np
 
 
 base_dir = '/camp/home/warnert/working/Recordings/binary_recording/2020-02-28_16-37-36'
