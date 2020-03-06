@@ -38,7 +38,7 @@ for i in rec.get_good_clusters():
     plt.xlabel("Time (s)")
     plt.ylabel("Trials")
     plt.savefig(base_dir + '/unit_resp_heatmap/cluster_%d_full_odour_resp.png', dpi=300)
-
+    plt.close()
 
 for i in rec.get_good_clusters():
     maxes = []
@@ -68,3 +68,4 @@ for i in rec.get_good_clusters():
     plt.xlabel("Time (s)")
     plt.ylabel("Trials")
     plt.savefig(base_dir + '/unit_resp_heatmap/cluster_%d_blank_resp.png', dpi=300)
+    plt.close()
