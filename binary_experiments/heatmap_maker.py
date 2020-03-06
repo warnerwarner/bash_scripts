@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-base_dir = '/camp/home/warnert/working/Recordings/binary_recording/2020-02-28_16-37-36'
+base_dir = '/camp/home/warnert/working/Recordings/binary_pulses/200228/2020-02-28_16-37-36'
 rec = br.Binary_recording(base_dir, 32, base_dir+'/2020-02-28trial_name_dorsal.txt')
 
 rec.set()
