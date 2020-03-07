@@ -18,14 +18,14 @@ for i in rec.get_good_clusters():
     maxes = []
     cluster_num = i.cluster_num
     ys = []
-    for i in range(4):
+    for i in range(3):
         trial_name = '31_%d' % int(2*i +1)
         trux, y = rec.get_binned_trial_response(trial_name, cluster_num, baselined=True, pre_trial_window=1, post_trial_window=1)
         maxes.append(max(np.max(y), abs(np.min(y))))
         ys.append(y)
     full_max = max(maxes)
     fig, ax = plt.subplots(2, 2, figsize=(10, 10))
-    for i in range(4):
+    for i in range(3):
         print(i%2, int(i/2))
         im = ax[int(i/2), i%2].imshow(ys[i], aspect='auto', vmin=-full_max, vmax=full_max, origin='lower', cmap='bwr')
         ax[int(i/2), i%2].set_title(num_to_chem[i])
@@ -48,14 +48,14 @@ for i in rec.get_good_clusters():
     maxes = []
     cluster_num = i.cluster_num
     ys = []
-    for i in range(4):
+    for i in range(3):
         trial_name = '0_%d' % int(2*i +1)
         trux, y = rec.get_binned_trial_response(trial_name, cluster_num, baselined=True, pre_trial_window=1, post_trial_window=1)
         maxes.append(max(np.max(y), abs(np.min(y))))
         ys.append(y)
     full_max = max(maxes)
     fig, ax = plt.subplots(2, 2, figsize=(10, 10))
-    for i in range(4):
+    for i in range(3):
         print(i%2, int(i/2))
         im = ax[int(i/2), i%2].imshow(ys[i], aspect='auto', vmin=-full_max, vmax=full_max, origin='lower', cmap='bwr')
         ax[int(i/2), i%2].set_title(num_to_chem[i])
