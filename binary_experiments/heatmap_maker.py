@@ -2,7 +2,7 @@ import sys
 sys.path.append('/camp/home/warnert/neurolytics')
 import binary_recording as br
 import matplotlib
-matplotlib.use('Agg')
+#matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 import numpy as np
@@ -41,7 +41,7 @@ for i in rec.get_good_clusters():
     plt.grid(False)
     plt.xlabel("Time (s)")
     plt.ylabel("Trials")
-    plt.savefig(base_dir + '/unit_resp_heatmap/cluster_%d_full_odour_resp.png', dpi=300)
+    plt.savefig(base_dir + '/unit_resp_heatmap/cluster_%d_full_odour_resp.png' % cluster_num, dpi=300)
     plt.close()
 
 for i in rec.get_good_clusters():
@@ -71,5 +71,5 @@ for i in rec.get_good_clusters():
     plt.grid(False)
     plt.xlabel("Time (s)")
     plt.ylabel("Trials")
-    plt.savefig(base_dir + '/unit_resp_heatmap/cluster_%d_blank_resp.png', dpi=300)
+    plt.savefig(base_dir + '/unit_resp_heatmap/cluster_%d_blank_resp.png' % cluster_num, dpi=300)
     plt.close()
