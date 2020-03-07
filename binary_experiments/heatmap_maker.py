@@ -1,7 +1,10 @@
 import sys
 sys.path.append('/camp/home/warnert/neurolytics')
 import binary_recording as br
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
+
 import numpy as np
 
 
