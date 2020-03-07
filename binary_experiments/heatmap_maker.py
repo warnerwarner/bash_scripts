@@ -9,7 +9,7 @@ import numpy as np
 
 
 base_dir = '/camp/home/warnert/working/Recordings/binary_pulses/200303/2020-03-03_16-44-23'
-trialbank_loc = '/camp/home/warnert/working/Recordings/binary_pulses/200303/200228_binary_dorsal_no_chan7.trialbank'
+trialbank_loc = '/camp/home/warnert/working/Recordings/binary_pulses/200303/2020-03-03trial_names_dorsal.txt'
 rec = br.Binary_recording(base_dir, 32, trialbank_loc)
 
 rec.set()
