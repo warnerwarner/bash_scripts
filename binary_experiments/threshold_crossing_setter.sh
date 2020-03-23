@@ -6,7 +6,7 @@
 #SBATCH --error=/home/camp/warnert/bash_scripts/binary_experiments/thresh_error_%j.err
 #SBATCH --ntasks=1
 #SBATCH --time=24:00:00
-#SBATCH --mem=200G
-#SBATCH --partition=cpu
+#SBATCH --mem=250G
+#SBATCH --partition=hmem
 
 python heatmap_maker.py
