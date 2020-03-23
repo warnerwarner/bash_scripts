@@ -9,4 +9,4 @@
 #SBATCH --mem=350G
 #SBATCH --partition=hmem
 
-python heatmap_maker.py
+python threshold_crossing_setter.py
