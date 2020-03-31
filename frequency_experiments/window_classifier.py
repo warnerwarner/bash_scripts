@@ -24,14 +24,13 @@ classifier.recordings = [rec1, rec2, rec3, rec4, rec5, rec6]
 repeats = 1000
 
 window_size = int(list(sys.argv)[1])
-
+classifier = cl.Classifier()
+classifier.recordings = [rec1, rec2, rec3, rec4, rec5, rec6]
+classifier.test_size = 0.2
 accuracy = []
 for start in range(600-window_size):
     start_accuracy = []
     for i in range(repeats):
-        classifier = cl.Classifier()
-        classifier.recordings = [rec1, rec2, rec3, rec4, rec5, rec6]
-        classifier.test_size = 0.2
         classifier.window_classifier(['5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0.0, window_size*0.01, baseline=False)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
