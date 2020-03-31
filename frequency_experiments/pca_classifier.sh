@@ -6,7 +6,7 @@
 #SBATCH --error=/home/camp/warnert/bash_scripts/frequency_experiments/pca_class_%a.err
 #SBATCH --ntasks=1
 #SBATCH --time=24:00:00
-#SBATCH --mem=50G
+#SBATCH --mem=150G
 #SBATCH --partition=cpu
 
 python pca_classifier.py $SLURM_ARRAY_TASK_ID
