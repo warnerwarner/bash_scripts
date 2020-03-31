@@ -18,8 +18,6 @@ rec4.set()
 rec5.set()
 rec6.set()
 
-classifier = cl.Classifier()
-classifier.recordings = [rec1, rec2, rec3, rec4, rec5, rec6]
 
 repeats = 1000
 
@@ -38,3 +36,18 @@ for start in range(600-window_size):
     accuracy.append([start, np.mean(start_accuracy), np.std(start_accuracy)])
 accuracy = np.array(accuracy)
 np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/window_size_%f.npy' % window_size)
+
+classifier = cl.Classifier()
+classifier.recordings = [rec1, rec2, rec3, rec4, rec5, rec6]
+classifier.test_size = 0.2
+accuracy = []
+for start in range(600-window_size):
+    start_accuracy = []
+    for i in range(repeats):
+        classifier.window_classifier(['5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0.0, window_size*0.01, baseline=False, shuffle=True)
+        classifier.find_accuracy()
+        start_accuracy.append(classifier.accuracy)
+
+    accuracy.append([start, np.mean(start_accuracy), np.std(start_accuracy)])
+accuracy = np.array(accuracy)
+np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/window_size_%f_shuffle.npy' % window_size)
