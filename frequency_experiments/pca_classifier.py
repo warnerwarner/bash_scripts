@@ -25,7 +25,7 @@ n_components = int(list(sys.argv)[1])
 classifier = cl.Classifier()
 classifier.recordings = [rec1, rec2, rec3, rec4, rec5, rec6]
 classifier.test_size = 0.2
-classifier.make_pca_response(n_components, ['5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'])
+classifier.make_pca_responses(n_components, ['5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'])
 
 
 pca_accuracy = []
