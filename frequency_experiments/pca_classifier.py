@@ -25,9 +25,9 @@ n_components = int(list(sys.argv)[1])
 classifier = cl.Classifier()
 classifier.recordings = [rec1, rec2, rec3, rec4, rec5, rec6]
 classifier.test_size = 0.2
-classifier.make_pca_responses(n_components, ['5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'])
+classifier.make_pca_responses(n_components, ['5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], baseline=False)
 
-
+print('Made classifier')
 pca_accuracy = []
 for i in range(repeats):
     classifier.pca_classifier(n_components, ['5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], baseline=False)
@@ -35,8 +35,8 @@ for i in range(repeats):
     pca_accuracy.append(classifier.accuracy)
 
 accuracy.append(['A', np.mean(pca_accuracy), np.std(pca_accuracy)])
-
-classifier.make_pca_response(n_components, ['5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'])
+print('Done A')
+classifier.make_pca_responses(n_components, ['5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], baseline=False)
 pca_accuracy = []
 for i in range(repeats):
     classifier.pca_classifier(n_components, ['5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], baseline=False)
@@ -45,7 +45,7 @@ for i in range(repeats):
 
 accuracy.append(['B', np.mean(pca_accuracy), np.std(pca_accuracy)])
 
-classifier.make_pca_response(n_components, ['5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'])
+classifier.make_pca_responses(n_components, ['5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], baseline=False)
 
 pca_accuracy = []
 for i in range(repeats):
@@ -56,7 +56,7 @@ for i in range(repeats):
 accuracy.append(['C', np.mean(pca_accuracy), np.std(pca_accuracy)])
 
 
-classifier.make_pca_response(n_components, ['5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'])
+classifier.make_pca_responses(n_components, ['5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], baseline=False)
 pca_accuracy = []
 for i in range(repeats):
     classifier.pca_classifier(n_components, ['5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], baseline=False)
@@ -65,7 +65,7 @@ for i in range(repeats):
 
 accuracy.append(['D', np.mean(pca_accuracy), np.std(pca_accuracy)])
 
-classifier.make_pca_response(n_components, ['5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'])
+classifier.make_pca_responses(n_components, ['5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], baseline=False)
 pca_accuracy = []
 for i in range(repeats):
     classifier.pca_classifier(n_components, ['5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], baseline=False)
@@ -78,7 +78,7 @@ accuracy.append(['Blank', np.mean(pca_accuracy), np.std(pca_accuracy)])
 
 # Shuffle
 
-classifier.make_pca_response(n_components, ['5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'])
+classifier.make_pca_responses(n_components, ['5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], baseline=False)
 
 
 pca_accuracy = []
@@ -89,7 +89,7 @@ for i in range(repeats):
 
 accuracy.append(['A_shuf', np.mean(pca_accuracy), np.std(pca_accuracy)])
 
-classifier.make_pca_response(n_components, ['5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'])
+classifier.make_pca_responses(n_components, ['5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], baseline=False)
 pca_accuracy = []
 for i in range(repeats):
     classifier.pca_classifier(n_components, ['5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], baseline=False, shuffle=True)
@@ -98,7 +98,7 @@ for i in range(repeats):
 
 accuracy.append(['B_shuf', np.mean(pca_accuracy), np.std(pca_accuracy)])
 
-classifier.make_pca_response(n_components, ['5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'])
+classifier.make_pca_responses(n_components, ['5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], baseline=False)
 
 pca_accuracy = []
 for i in range(repeats):
@@ -109,7 +109,7 @@ for i in range(repeats):
 accuracy.append(['C_shuf', np.mean(pca_accuracy), np.std(pca_accuracy)])
 
 
-classifier.make_pca_response(n_components, ['5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'])
+classifier.make_pca_responses(n_components, ['5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], baseline=False)
 pca_accuracy = []
 for i in range(repeats):
     classifier.pca_classifier(n_components, ['5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], baseline=False, shuffle=True)
@@ -118,7 +118,7 @@ for i in range(repeats):
 
 accuracy.append(['D_shuf', np.mean(pca_accuracy), np.std(pca_accuracy)])
 
-classifier.make_pca_response(n_components, ['5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'])
+classifier.make_pca_responses(n_components, ['5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], baseline=False)
 pca_accuracy = []
 for i in range(repeats):
     classifier.pca_classifier(n_components, ['5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], baseline=False, shuffle=True)
