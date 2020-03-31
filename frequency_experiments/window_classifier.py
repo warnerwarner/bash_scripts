@@ -23,7 +23,7 @@ classifier.recordings = [rec1, rec2, rec3, rec4, rec5, rec6]
 
 repeats = 1000
 
-window_size = list(sys.argv)[1]
+window_size = int(list(sys.argv)[1])
 window_size = window_size*0.01
 accuracy = []
 for start in range(600-window_size):
