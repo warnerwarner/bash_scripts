@@ -3,6 +3,13 @@ sys.path.append('/home/camp/warnert/neurolytics')
 import classifier as cl
 import correlation_recording as cr
 import numpy as np
+import psutil
+import os
+
+
+available_cpu_count = len(psutil.Process().cpu_affinity())
+os.environ["MKL_NUM_THREADS"] = str(available_cpu_count)
+
 
 rec1 = cr.Correlation_Recording('/home/camp/warnert/working/Recordings/Correlation_project_2019/190910/2019-09-10_12-42-15', 32, '/home/camp/warnert/working/Recordings/Correlation_project_2019/190910/190910SqPulseFreqCorrelationLongRandom.trialbank')
 rec2 = cr.Correlation_Recording('/home/camp/warnert/working/Recordings/Correlation_project_2019/190911/2019-09-11_15-27-40/', 32, '/home/camp/warnert/working/Recordings/Correlation_project_2019/190911/190910SqPulseFreqCorrelationLongRandom.trialbank')
