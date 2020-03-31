@@ -18,7 +18,7 @@ rec4.set()
 rec5.set()
 rec6.set()
 
-repeats = 1000
+repeats = 10
 
 accuracy = []
 n_components = int(list(sys.argv)[1])
