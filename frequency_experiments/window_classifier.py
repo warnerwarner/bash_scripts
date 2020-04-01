@@ -35,12 +35,12 @@ classifier.recordings = [rec1, rec2, rec3, rec4, rec5, rec6]
 classifier.test_size = 0.2
 
 # A
-classifier.make_unit_response(['5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], baseline=False)
+classifier.make_unit_response(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], baseline=False)
 accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0.0, window_size*0.01, baseline=False)
+        classifier.window_classifier(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0.0, window_size*0.01, baseline=False)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -50,12 +50,12 @@ np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequenc
 
 # B
 print('Done A')
-classifier.make_unit_response(['5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], baseline=False)
+classifier.make_unit_response(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], baseline=False)
 accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], 0.0, window_size*0.01, baseline=False)
+        classifier.window_classifier(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], 0.0, window_size*0.01, baseline=False)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -64,13 +64,13 @@ accuracy = np.array(accuracy)
 np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/B_window_size_%d.npy' % window_size, accuracy)
 
 # C
-classifier.make_unit_response(['5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], baseline=False)
+classifier.make_unit_response(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], baseline=False)
 print('Done B')
 accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], 0.0, window_size*0.01, baseline=False)
+        classifier.window_classifier(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], 0.0, window_size*0.01, baseline=False)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -79,12 +79,12 @@ accuracy = np.array(accuracy)
 np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/C_window_size_%d.npy' % window_size, accuracy)
 
 # D
-classifier.make_unit_response(['5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], baseline=False)
+classifier.make_unit_response(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], baseline=False)
 accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], 0.0, window_size*0.01, baseline=False)
+        classifier.window_classifier(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], 0.0, window_size*0.01, baseline=False)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -93,12 +93,12 @@ accuracy = np.array(accuracy)
 np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/D_window_size_%d.npy' % window_size, accuracy)
 
 # Blank
-classifier.make_unit_response(['5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], baseline=False)
+classifier.make_unit_response(['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], baseline=False)
 accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], 0.0, window_size*0.01, baseline=False)
+        classifier.window_classifier(['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], 0.0, window_size*0.01, baseline=False)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -110,12 +110,12 @@ np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequenc
 # shuffle
 
 # A
-classifier.make_unit_response(['5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], baseline=False)
+classifier.make_unit_response(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], baseline=False)
 accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0.0, window_size*0.01, baseline=False, shuffle=True)
+        classifier.window_classifier(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0.0, window_size*0.01, baseline=False, shuffle=True)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -124,12 +124,12 @@ accuracy = np.array(accuracy)
 np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/A_window_size_shuf_%d.npy' % window_size, accuracy)
 
 # B
-classifier.make_unit_response(['5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], baseline=False)
+classifier.make_unit_response(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], baseline=False)
 accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], 0.0, window_size*0.01, baseline=False, shuffle=True)
+        classifier.window_classifier(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], 0.0, window_size*0.01, baseline=False, shuffle=True)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -139,12 +139,12 @@ np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequenc
 
 
 # C
-classifier.make_unit_response(['5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], baseline=False)
+classifier.make_unit_response(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], baseline=False)
 accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], 0.0, window_size*0.01, baseline=False, shuffle=True)
+        classifier.window_classifier(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], 0.0, window_size*0.01, baseline=False, shuffle=True)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -153,12 +153,12 @@ accuracy = np.array(accuracy)
 np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/C_window_size_shuf_%d.npy' % window_size, accuracy)
 
 # D
-classifier.make_unit_response(['5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], baseline=False)
+classifier.make_unit_response(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], baseline=False)
 accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], 0.0, window_size*0.01, baseline=False, shuffle=True)
+        classifier.window_classifier(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], 0.0, window_size*0.01, baseline=False, shuffle=True)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -167,12 +167,12 @@ accuracy = np.array(accuracy)
 np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/D_window_size_shuf_%d.npy' % window_size, accuracy)
 
 # Blank
-classifier.make_unit_response(['5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], baseline=False)
+classifier.make_unit_response(['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], baseline=False)
 accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], 0.0, window_size*0.01, baseline=False, shuffle=True)
+        classifier.window_classifier(['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], 0.0, window_size*0.01, baseline=False, shuffle=True)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
