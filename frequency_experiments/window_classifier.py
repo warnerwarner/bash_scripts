@@ -5,6 +5,7 @@ import correlation_recording as cr
 import numpy as np
 import psutil
 import os
+from tqdm import tqdm
 
 
 available_cpu_count = len(psutil.Process().cpu_affinity())
@@ -26,7 +27,7 @@ rec5.set()
 rec6.set()
 
 
-repeats = 1000
+repeats = 10
 
 window_size = int(list(sys.argv)[1])
 classifier = cl.Classifier()
@@ -35,7 +36,7 @@ classifier.test_size = 0.2
 
 # A
 accuracy = []
-for start in range(600-window_size):
+for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0.0, window_size*0.01, baseline=False)
@@ -47,8 +48,9 @@ accuracy = np.array(accuracy)
 np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/A_window_size_%f.npy' % window_size, accuracy)
 
 # B
+print('Done A')
 accuracy = []
-for start in range(600-window_size):
+for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], 0.0, window_size*0.01, baseline=False)
@@ -60,8 +62,9 @@ accuracy = np.array(accuracy)
 np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/B_window_size_%f.npy' % window_size, accuracy)
 
 # C
+print('Done B')
 accuracy = []
-for start in range(600-window_size):
+for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], 0.0, window_size*0.01, baseline=False)
@@ -74,7 +77,7 @@ np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequenc
 
 # D
 accuracy = []
-for start in range(600-window_size):
+for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], 0.0, window_size*0.01, baseline=False)
@@ -87,7 +90,7 @@ np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequenc
 
 # Blank
 accuracy = []
-for start in range(600-window_size):
+for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], 0.0, window_size*0.01, baseline=False)
@@ -103,7 +106,7 @@ np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequenc
 
 # A
 accuracy = []
-for start in range(600-window_size):
+for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0.0, window_size*0.01, baseline=False, shuffle=True)
@@ -116,7 +119,7 @@ np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequenc
 
 # B
 accuracy = []
-for start in range(600-window_size):
+for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], 0.0, window_size*0.01, baseline=False, shuffle=True)
@@ -130,7 +133,7 @@ np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequenc
 
 # C
 accuracy = []
-for start in range(600-window_size):
+for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], 0.0, window_size*0.01, baseline=False, shuffle=True)
@@ -143,7 +146,7 @@ np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequenc
 
 # D
 accuracy = []
-for start in range(600-window_size):
+for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], 0.0, window_size*0.01, baseline=False, shuffle=True)
@@ -156,7 +159,7 @@ np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequenc
 
 # Blank
 accuracy = []
-for start in range(600-window_size):
+for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], 0.0, window_size*0.01, baseline=False, shuffle=True)
