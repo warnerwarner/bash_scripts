@@ -27,7 +27,7 @@ rec5.set()
 rec6.set()
 
 
-repeats = 10
+repeats = 1000
 
 window_size = int(list(sys.argv)[1])
 classifier = cl.Classifier()
