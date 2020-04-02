@@ -27,7 +27,7 @@ rec5.set()
 rec6.set()
 
 
-repeats = 1000
+repeats = 10
 
 window_size = int(list(sys.argv)[1])
 classifier = cl.Classifier()
@@ -40,7 +40,7 @@ accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], start*0.01, window_size*0.01, baseline=False)
+        classifier.window_classifier(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], start*0.01, (start + window_size)*0.01, baseline=False)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -55,7 +55,7 @@ accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], start*0.01, window_size*0.01, baseline=False)
+        classifier.window_classifier(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], start*0.01, (start + window_size)*0.01, baseline=False)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -70,7 +70,7 @@ accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], start*0.01, window_size*0.01, baseline=False)
+        classifier.window_classifier(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], start*0.01, (start + window_size)*0.01, baseline=False)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -84,7 +84,7 @@ accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], start*0.01, window_size*0.01, baseline=False)
+        classifier.window_classifier(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], start*0.01, (start + window_size)*0.01, baseline=False)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -98,7 +98,7 @@ accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], start*0.01, window_size*0.01, baseline=False)
+        classifier.window_classifier(['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], start*0.01, (start + window_size)*0.01, baseline=False)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -115,7 +115,7 @@ accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], start*0.01, window_size*0.01, baseline=False, shuffle=True)
+        classifier.window_classifier(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], start*0.01, (start + window_size)*0.01, baseline=False, shuffle=True)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -129,7 +129,7 @@ accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], start*0.01, window_size*0.01, baseline=False, shuffle=True)
+        classifier.window_classifier(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], start*0.01, (start + window_size)*0.01, baseline=False, shuffle=True)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -144,7 +144,7 @@ accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], start*0.01, window_size*0.01, baseline=False, shuffle=True)
+        classifier.window_classifier(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], start*0.01, (start + window_size)*0.01, baseline=False, shuffle=True)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -158,7 +158,7 @@ accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], start*0.01, window_size*0.01, baseline=False, shuffle=True)
+        classifier.window_classifier(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], start*0.01, (start + window_size)*0.01, baseline=False, shuffle=True)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
@@ -172,7 +172,7 @@ accuracy = []
 for start in tqdm(range(600-window_size)):
     start_accuracy = []
     for i in range(repeats):
-        classifier.window_classifier(['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], start*0.01, window_size*0.01, baseline=False, shuffle=True)
+        classifier.window_classifier(['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'], start*0.01, (start + window_size)*0.01, baseline=False, shuffle=True)
         classifier.find_accuracy()
         start_accuracy.append(classifier.accuracy)
 
