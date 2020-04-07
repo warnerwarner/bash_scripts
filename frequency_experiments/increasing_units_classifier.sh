@@ -9,4 +9,4 @@
 #SBATCH --mem=150G
 #SBATCH --partition=cpu
 
-python increasing_unit_classifier.py
+python increasing_units_classifier.py
