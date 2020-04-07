@@ -40,7 +40,7 @@ classifier.make_difference_response(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz
 num_of_units = classifier.num_of_units
 
 accuracy = []
-for unit_count in tqdm(range(num_of_units)):
+for unit_count in tqdm(range(1, num_of_units)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0, 2.28, baseline=False, sub_units=unit_count)
@@ -57,7 +57,7 @@ classifier.make_difference_response(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz
                                     ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
                                     baseline=False)
 accuracy = []
-for unit_count in tqdm(range(num_of_units)):
+for unit_count in tqdm(range(1, num_of_units)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], 0, 2.28, baseline=False, sub_units=unit_count)
@@ -74,7 +74,7 @@ classifier.make_difference_response(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz
                                     baseline=False)
 print('Done B')
 accuracy = []
-for unit_count in tqdm(range(num_of_units)):
+for unit_count in tqdm(range(1, num_of_units)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], 0, 2.28, baseline=False, sub_units=unit_count)
@@ -90,7 +90,7 @@ classifier.make_difference_response(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz
                                     ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
                                     baseline=False)
 accuracy = []
-for unit_count in tqdm(range(num_of_units)):
+for unit_count in tqdm(range(1, num_of_units)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], 0, 2.28, baseline=False, sub_units=unit_count)
@@ -108,7 +108,7 @@ classifier.make_difference_response(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz
                                     ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
                                     baseline=False)
 accuracy = []
-for unit_count in tqdm(range(num_of_units)):
+for unit_count in tqdm(range(1, num_of_units)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0, 2.28, baseline=False, sub_units=unit_count, shuffle=True)
@@ -124,7 +124,7 @@ classifier.make_difference_response(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz
                                     ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
                                     baseline=False)
 accuracy = []
-for unit_count in tqdm(range(num_of_units)):
+for unit_count in tqdm(range(1, num_of_units)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], 0, 2.28, baseline=False, sub_units=unit_count, shuffle=True)
@@ -142,7 +142,7 @@ classifier.make_difference_response(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz
                                     baseline=False)
 accuracy = []
 accuracy = []
-for unit_count in tqdm(range(num_of_units)):
+for unit_count in tqdm(range(1, num_of_units)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], 0, 2.28, baseline=False, sub_units=unit_count, shuffle=True)
@@ -159,7 +159,7 @@ classifier.make_difference_response(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz
                                     baseline=False)
 accuracy = []
 accuracy = []
-for unit_count in tqdm(range(num_of_units)):
+for unit_count in tqdm(range(1, num_of_units)):
     start_accuracy = []
     for i in range(repeats):
         classifier.window_classifier(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], 0, 2.28, baseline=False, sub_units=unit_count, shuffle=True)
