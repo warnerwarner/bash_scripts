@@ -33,6 +33,7 @@ window_size = int(list(sys.argv)[1])
 classifier = cl.Classifier()
 classifier.recordings = [rec1, rec2, rec3, rec4, rec5, rec6]
 classifier.test_size = 0.2
+classifier.scale = 'standard'
 
 # A
 classifier.make_difference_response(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'],
