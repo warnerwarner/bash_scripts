@@ -37,6 +37,7 @@ classifier.test_size = 0.2
 classifier.make_difference_response(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'],
                                     ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
                                     baseline=False)
+classifier.scale = 'standard'
 num_of_units = classifier.num_of_units
 
 accuracy = []
