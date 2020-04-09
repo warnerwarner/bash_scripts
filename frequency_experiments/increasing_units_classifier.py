@@ -37,7 +37,8 @@ odour = odours[odour_index]
 classifier = cl.Classifier()
 classifier.recordings = [rec1, rec2, rec3, rec4, rec5, rec6]
 classifier.test_size = 0.2
-
+classifier.scale = 'standard'
+num_of_units = classifier.num_of_units
 # A
 
 if odour == 'A':
@@ -45,8 +46,7 @@ if odour == 'A':
     classifier.make_difference_response(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'],
                                         ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
                                         baseline=False)
-    classifier.scale = 'standard'
-    num_of_units = classifier.num_of_units
+
 
     accuracy = []
     for unit_count in tqdm(range(1, num_of_units)):
