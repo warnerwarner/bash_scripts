@@ -38,7 +38,6 @@ classifier = cl.Classifier()
 classifier.recordings = [rec1, rec2, rec3, rec4, rec5, rec6]
 classifier.test_size = 0.2
 classifier.scale = 'standard'
-num_of_units = classifier.num_of_units
 # A
 
 if odour == 'A':
@@ -47,6 +46,7 @@ if odour == 'A':
                                         ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
                                         baseline=False)
 
+    num_of_units = classifier.num_of_units
 
     accuracy = []
     for unit_count in tqdm(range(1, num_of_units)):
@@ -66,6 +66,8 @@ elif odour == 'B':
     classifier.make_difference_response(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'],
                                         ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
                                         baseline=False)
+
+    num_of_units = classifier.num_of_units
     accuracy = []
     for unit_count in tqdm(range(1, num_of_units)):
         start_accuracy = []
@@ -84,6 +86,7 @@ elif odour == 'C':
     classifier.make_difference_response(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'],
                                         ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
                                         baseline=False)
+    num_of_units = classifier.num_of_units
     accuracy = []
     for unit_count in tqdm(range(1, num_of_units)):
         start_accuracy = []
@@ -101,6 +104,8 @@ elif odour == 'D':
     classifier.make_difference_response(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'],
                                         ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
                                         baseline=False)
+
+    num_of_units = classifier.num_of_units
     accuracy = []
     for unit_count in tqdm(range(1, num_of_units)):
         start_accuracy = []
@@ -121,6 +126,7 @@ elif odour == 'A_shuf':
     classifier.make_difference_response(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'],
                                         ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
                                         baseline=False)
+    num_of_units = classifier.num_of_units
     accuracy = []
     for unit_count in tqdm(range(1, num_of_units)):
         start_accuracy = []
@@ -139,6 +145,7 @@ elif odour == 'B_shuf':
     classifier.make_difference_response(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'],
                                         ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
                                         baseline=False)
+    num_of_units = classifier.num_of_units
     accuracy = []
     for unit_count in tqdm(range(1, num_of_units)):
         start_accuracy = []
@@ -158,7 +165,7 @@ elif odour == 'C_shuf':
     classifier.make_difference_response(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'],
                                         ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
                                         baseline=False)
-    accuracy = []
+    num_of_units = classifier.num_of_units
     accuracy = []
     for unit_count in tqdm(range(1, num_of_units)):
         start_accuracy = []
@@ -177,7 +184,7 @@ elif odour == 'D_shuf':
     classifier.make_difference_response(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'],
                                         ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
                                         baseline=False)
-    accuracy = []
+    num_of_units = classifier.num_of_units
     accuracy = []
     for unit_count in tqdm(range(1, num_of_units)):
         start_accuracy = []
