@@ -31,171 +31,110 @@ repeats = 1000
 
 odours = ['C', 'D', 'A_shuf', 'B_shuf', 'C_shuf', 'D_shuf']
 
-odour_index = int(list(sys.argv)[1])
-odour = odours[odour_index]
+unit_count = int(list(sys.argv)[1])
+
 
 classifier = cl.Classifier()
 classifier.recordings = [rec1, rec2, rec3, rec4, rec5, rec6]
 classifier.test_size = 0.2
 classifier.scale = 'standard'
+num_of_units = classifier.num_of_units
+num_of_units = classifier.num_of_units
+accuracy = []
 # A
+classifier.make_difference_response(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'],
+                                    ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
+                                    baseline=False)
 
-if odour == 'A':
-    print('Odour A')
-    classifier.make_difference_response(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'],
-                                        ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
-                                        baseline=False)
+indiv_accuracy = []
+for i in tqdm(range(repeats)):
+    classifier.window_classifier(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0, 2.28, baseline=False, sub_units=unit_count)
+    classifier.find_accuracy()
+    indiv_accuracy.append(classifier.accuracy)
 
-    num_of_units = classifier.num_of_units
+accuracy.append(['A', np.mean(indiv_accuracy), np.std(indiv_accuracy)])
 
-    accuracy = []
-    for unit_count in tqdm(range(1, num_of_units)):
-        start_accuracy = []
-        for i in range(repeats):
-            classifier.window_classifier(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0, 2.28, baseline=False, sub_units=unit_count)
-            classifier.find_accuracy()
-            start_accuracy.append(classifier.accuracy)
+classifier.make_difference_response(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'],
+                                    ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
+                                    baseline=False)
 
-        accuracy.append([unit_count, np.mean(start_accuracy), np.std(start_accuracy)])
-    accuracy = np.array(accuracy)
-    np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/A_blank_subtract_increasing_units_ws_2280_%d.npy' % unit_count, accuracy)
+indiv_accuracy = []
+for i in tqdm(range(repeats)):
+    classifier.window_classifier(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], 0, 2.28, baseline=False, sub_units=unit_count)
+    classifier.find_accuracy()
+    indiv_accuracy.append(classifier.accuracy)
 
-# B
-elif odour == 'B':
-    print('Odour B')
-    classifier.make_difference_response(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'],
-                                        ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
-                                        baseline=False)
+accuracy.append(['B', np.mean(indiv_accuracy), np.std(indiv_accuracy)])
 
-    num_of_units = classifier.num_of_units
-    accuracy = []
-    for unit_count in tqdm(range(1, num_of_units)):
-        start_accuracy = []
-        for i in range(repeats):
-            classifier.window_classifier(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], 0, 2.28, baseline=False, sub_units=unit_count)
-            classifier.find_accuracy()
-            start_accuracy.append(classifier.accuracy)
+classifier.make_difference_response(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'],
+                                    ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
+                                    baseline=False)
 
-        accuracy.append([unit_count, np.mean(start_accuracy), np.std(start_accuracy)])
-    accuracy = np.array(accuracy)
-    np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/B_blank_subtract_increasing_units_ws_2280_%d.npy' % unit_count, accuracy)
+indiv_accuracy = []
+for i in tqdm(range(repeats)):
+    classifier.window_classifier(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], 0, 2.28, baseline=False, sub_units=unit_count)
+    classifier.find_accuracy()
+    indiv_accuracy.append(classifier.accuracy)
 
-# C
-elif odour == 'C':
-    print('Odour C')
-    classifier.make_difference_response(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'],
-                                        ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
-                                        baseline=False)
-    num_of_units = classifier.num_of_units
-    accuracy = []
-    for unit_count in tqdm(range(1, num_of_units)):
-        start_accuracy = []
-        for i in range(repeats):
-            classifier.window_classifier(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], 0, 2.28, baseline=False, sub_units=unit_count)
-            classifier.find_accuracy()
-            start_accuracy.append(classifier.accuracy)
+accuracy.append(['C', np.mean(indiv_accuracy), np.std(indiv_accuracy)])
 
-        accuracy.append([unit_count, np.mean(start_accuracy), np.std(start_accuracy)])
-    accuracy = np.array(accuracy)
-    np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/C_blank_subtract_increasing_units_ws_2280_%d.npy' % unit_count, accuracy)
+classifier.make_difference_response(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'],
+                                    ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
+                                    baseline=False)
 
-# D
-elif odour == 'D':
-    classifier.make_difference_response(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'],
-                                        ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
-                                        baseline=False)
+indiv_accuracy = []
+for i in tqdm(range(repeats)):
+    classifier.window_classifier(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], 0, 2.28, baseline=False, sub_units=unit_count)
+    classifier.find_accuracy()
+    indiv_accuracy.append(classifier.accuracy)
 
-    num_of_units = classifier.num_of_units
-    accuracy = []
-    for unit_count in tqdm(range(1, num_of_units)):
-        start_accuracy = []
-        for i in range(repeats):
-            classifier.window_classifier(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], 0, 2.28, baseline=False, sub_units=unit_count)
-            classifier.find_accuracy()
-            start_accuracy.append(classifier.accuracy)
-
-        accuracy.append([unit_count, np.mean(start_accuracy), np.std(start_accuracy)])
-    accuracy = np.array(accuracy)
-    np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/D_blank_subtract_increasing_units_ws_2280_%d.npy' % unit_count, accuracy)
-
-# shuffle
-
-# A
-elif odour == 'A_shuf':
-    print('Odour A shuf')
-    classifier.make_difference_response(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'],
-                                        ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
-                                        baseline=False)
-    num_of_units = classifier.num_of_units
-    accuracy = []
-    for unit_count in tqdm(range(1, num_of_units)):
-        start_accuracy = []
-        for i in range(repeats):
-            classifier.window_classifier(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0, 2.28, baseline=False, sub_units=unit_count, shuffle=True)
-            classifier.find_accuracy()
-            start_accuracy.append(classifier.accuracy)
-
-        accuracy.append([unit_count, np.mean(start_accuracy), np.std(start_accuracy)])
-    accuracy = np.array(accuracy)
-    np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/A_blank_subtract_increasing_units_ws_2280_shuf_%d.npy' % unit_count, accuracy)
-
-# B
-elif odour == 'B_shuf':
-    print('Odour B shuf')
-    classifier.make_difference_response(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'],
-                                        ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
-                                        baseline=False)
-    num_of_units = classifier.num_of_units
-    accuracy = []
-    for unit_count in tqdm(range(1, num_of_units)):
-        start_accuracy = []
-        for i in range(repeats):
-            classifier.window_classifier(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], 0, 2.28, baseline=False, sub_units=unit_count, shuffle=True)
-            classifier.find_accuracy()
-            start_accuracy.append(classifier.accuracy)
-
-        accuracy.append([unit_count, np.mean(start_accuracy), np.std(start_accuracy)])
-    accuracy = np.array(accuracy)
-    np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/B_blank_subtract_increasing_units_ws_2280_shuf_%d.npy' % unit_count, accuracy)
+accuracy.append(['D', np.mean(indiv_accuracy), np.std(indiv_accuracy)])
 
 
-# C
-elif odour == 'C_shuf':
-    print('Odour C shuf')
-    classifier.make_difference_response(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'],
-                                        ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
-                                        baseline=False)
-    num_of_units = classifier.num_of_units
-    accuracy = []
-    for unit_count in tqdm(range(1, num_of_units)):
-        start_accuracy = []
-        for i in range(repeats):
-            classifier.window_classifier(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], 0, 2.28, baseline=False, sub_units=unit_count, shuffle=True)
-            classifier.find_accuracy()
-            start_accuracy.append(classifier.accuracy)
+classifier.make_difference_response(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'],
+                                    ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
+                                    baseline=False)
 
-        accuracy.append([unit_count, np.mean(start_accuracy), np.std(start_accuracy)])
-    accuracy = np.array(accuracy)
-    np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/C_blank_subtract_increasing_units_ws_2280_shuf_%d.npy' % unit_count, accuracy)
+indiv_accuracy = []
+for i in tqdm(range(repeats)):
+    classifier.window_classifier(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0, 2.28, baseline=False, sub_units=unit_count, shuffle=True)
+    classifier.find_accuracy()
+    indiv_accuracy.append(classifier.accuracy)
 
-# D
-elif odour == 'D_shuf':
-    print('Odour D shuf')
-    classifier.make_difference_response(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'],
-                                        ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
-                                        baseline=False)
-    num_of_units = classifier.num_of_units
-    accuracy = []
-    for unit_count in tqdm(range(1, num_of_units)):
-        start_accuracy = []
-        for i in range(repeats):
-            classifier.window_classifier(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], 0, 2.28, baseline=False, sub_units=unit_count, shuffle=True)
-            classifier.find_accuracy()
-            start_accuracy.append(classifier.accuracy)
+accuracy.append(['A_shuf', np.mean(indiv_accuracy), np.std(indiv_accuracy)])
 
-        accuracy.append([unit_count, np.mean(start_accuracy), np.std(start_accuracy)])
-    accuracy = np.array(accuracy)
-    np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/D_blank_subtract_increasing_units_ws_2280_shuf_%d.npy' % unit_count, accuracy)
+classifier.make_difference_response(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'],
+                                    ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
+                                    baseline=False)
 
-else:
-    raise ValueError('Odour type doesn\'t exist')
+indiv_accuracy = []
+for i in tqdm(range(repeats)):
+    classifier.window_classifier(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz_B'], 0, 2.28, baseline=False, sub_units=unit_count, shuffle=True)
+    classifier.find_accuracy()
+    indiv_accuracy.append(classifier.accuracy)
+
+accuracy.append(['B_shuf', np.mean(indiv_accuracy), np.std(indiv_accuracy)])
+
+classifier.make_difference_response(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'],
+                                    ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
+                                    baseline=False)
+
+indiv_accuracy = []
+for i in tqdm(range(repeats)):
+    classifier.window_classifier(['2Hz_C', '5Hz_C', '10Hz_C', '15Hz_C', '20Hz_C'], 0, 2.28, baseline=False, sub_units=unit_count, shuffle=True)
+    classifier.find_accuracy()
+    indiv_accuracy.append(classifier.accuracy)
+
+accuracy.append(['C_shuffle', np.mean(indiv_accuracy), np.std(indiv_accuracy)])
+
+classifier.make_difference_response(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'],
+                                    ['2Hz_blank', '5Hz_Blank', '10Hz_Blank', '15Hz_Blank', '20Hz_Blank'],
+                                    baseline=False)
+
+indiv_accuracy = []
+for i in tqdm(range(repeats)):
+    classifier.window_classifier(['2Hz_D', '5Hz_D', '10Hz_D', '15Hz_D', '20Hz_D'], 0, 2.28, baseline=False, sub_units=unit_count, shuffle=True)
+    classifier.find_accuracy()
+    indiv_accuracy.append(classifier.accuracy)
+
+accuracy.append(['D_shuffle', np.mean(indiv_accuracy), np.std(indiv_accuracy)])
