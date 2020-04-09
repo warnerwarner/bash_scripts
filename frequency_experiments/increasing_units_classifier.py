@@ -138,3 +138,4 @@ for i in tqdm(range(repeats)):
     indiv_accuracy.append(classifier.accuracy)
 
 accuracy.append(['D_shuffle', np.mean(indiv_accuracy), np.std(indiv_accuracy)])
+np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/window_228_accuracy_num_of_units_%d.npy' % unit_count, accuracy)
