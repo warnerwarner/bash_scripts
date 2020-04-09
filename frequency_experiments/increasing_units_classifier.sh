@@ -9,4 +9,4 @@
 #SBATCH --mem=150G
 #SBATCH --partition=cpu
 
-python increasing_units_classifier.py
+python increasing_units_classifier.py $SLURM_ARRAY_TASK_ID
