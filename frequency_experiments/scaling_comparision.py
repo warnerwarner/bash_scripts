@@ -45,18 +45,22 @@ scale_types = [None, 'standard', 'robust', 'minmax']
 scale_index = list(sys.argv)[1]
 scale_type = scale_types[int(scale_index)]
 classifier.scale = scale_type
-
+y_var = deepcopy(classifier.y_var)
 
 accs = []
 for i in tqdm(range(400)):
     step_acc = []
-    step_acc_shuf = []
     for j in range(100):
         classifier.window_classifier(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0, 0.01+i*0.01, baseline=False)
-        classifier.find_accuracy()
         step_acc.append(classifier.find_accuracy())
+    accs.append([i*0.01, np.mean(step_acc), np.std(step_acc)])
+
+accs_shuf = []
+for i in tqdm(range(400)):
+    step_acc = []
+    for j in range(100):
         classifier.window_classifier(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0, 0.01+i*0.01, baseline=False, shuffle=True)
-        classifier.find_accuracy()
-        step_acc_shuf.append(classifier.find_accuracy())
-    accs.append([np.mean(step_acc), np.mean(step_acc_shuf), np.std(step_acc), np.std(step_acc_shuf)])
-np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/odourA_accuracy_scaling_%s.npy' % scale_type, accs)
+        step_acc.append(classifier.find_accuracy())
+    accs_shuf.append([i*0.01, np.mean(step_acc), np.std(step_acc)])
+
+np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/odourA_accuracy_scaling_%s.npy' % scale_type, np.array([accs, accs_shuf]))
