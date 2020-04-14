@@ -59,4 +59,4 @@ for i in tqdm(range(400)):
         classifier.find_accuracy()
         step_acc_shuf.append(classifier.find_accuracy())
     accs.append([np.mean(step_acc), np.mean(step_acc_shuf), np.std(step_acc), np.std(step_acc_shuf)])
-np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/window_228_accuracy_num_of_units_%s.npy' % scale_type, accs)
+np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/odourA_accuracy_scaling_%s.npy' % scale_type, accs)
