@@ -96,7 +96,7 @@ classifier.make_difference_response(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz
 
 indiv_accuracy = []
 for i in tqdm(range(repeats)):
-    classifier.window_classifier(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0, 2.28, baseline=False, sub_units=unit_count, shuffle=True)
+    classifier.window_classifier(['2Hz_A', '5Hz_A', '10Hz_A', '15Hz_A', '20Hz_A'], 0, 0.5, baseline=False, sub_units=unit_count, shuffle=True)
     classifier.find_accuracy()
     indiv_accuracy.append(classifier.accuracy)
 
