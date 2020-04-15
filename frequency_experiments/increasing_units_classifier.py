@@ -37,7 +37,7 @@ unit_count = int(list(sys.argv)[1])
 classifier = cl.Classifier()
 classifier.recordings = [rec1, rec2, rec3, rec4, rec5, rec6]
 classifier.test_size = 0.5
-classifier.scale = 'standard'
+classifier.scale = 'robust'
 num_of_units = classifier.num_of_units
 accuracy = []
 # A
@@ -137,4 +137,4 @@ classifier.make_difference_response(['2Hz_B', '5Hz_B', '10Hz_B', '15Hz_B', '20Hz
 #     indiv_accuracy.append(classifier.accuracy)
 #
 # accuracy.append(['D_shuffle', np.mean(indiv_accuracy), np.std(indiv_accuracy)])
-np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/window_50_accuracy_num_of_units_%d.npy' % unit_count, accuracy)
+np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/window_50_accuracy_num_of_units_%d_robust_scaling.npy' % unit_count, accuracy)
