@@ -41,11 +41,12 @@ classifier.recordings = [rec1, rec2, rec3, rec4, rec5, rec6]
 
 accs = []
 for trial2 in trial_names:
-    classifier.make_unit_response([trial1, trial2], baseline=False)
-    trial_accs = []
-    for i in tqdm(range(repeats)):
-        classifier.window_classifier([trial1, trial2], 0.0, 0.5, baseline=False)
-        trial_accs.append(classifier.find_accuracy())
-    accs.append([trial2, np.mean(trial_accs), np.std(trial_accs)])
+    if trial2 != trial1:
+        classifier.make_unit_response([trial1, trial2], baseline=False)
+        trial_accs = []
+        for i in tqdm(range(repeats)):
+            classifier.window_classifier([trial1, trial2], 0.0, 0.5, baseline=False)
+            trial_accs.append(classifier.find_accuracy())
+        accs.append([trial2, np.mean(trial_accs), np.std(trial_accs)])
 
 np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/frequency/window_classifier_accuracy/%s_vs_each_trial_500ms.npy' % trial1, accs)
