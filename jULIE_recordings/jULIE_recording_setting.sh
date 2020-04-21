@@ -8,4 +8,4 @@
 #SBATCH --mem=250G
 #SBATCH --partition=cpu
 
-python window_classifier.py $SLURM_ARRAY_TASK_ID
+python jULIE_recordings_setting.py
