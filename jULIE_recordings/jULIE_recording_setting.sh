@@ -8,4 +8,4 @@
 #SBATCH --mem=250G
 #SBATCH --partition=cpu
 
-python jULIE_recordings_setting.py
+python jULIE_recording_setting.py
