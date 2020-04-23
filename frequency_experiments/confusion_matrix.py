@@ -57,10 +57,10 @@ window_unit_response = np.sum(window_unit_response, axis=2).T
 sss = StratifiedShuffleSplit(n_splits=1000, test_size=25)
 classifier_guesses = {}
 for i, j in tqdm(sss.split(window_unit_response, classifier.y_var)):
-    X_train = window_unit_response[j]
-    X_test = window_unit_response[i]
-    y_train = np.array(classifier.y_var)[j]
-    y_test = np.array(classifier.y_var)[i]
+    X_train = window_unit_response[i]
+    X_test = window_unit_response[j]
+    y_train = np.array(classifier.y_var)[i]
+    y_test = np.array(classifier.y_var)[j]
     svm = LinearSVC(C=1000)
     svm.fit(X_train, y_train)
 
