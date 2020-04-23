@@ -9,4 +9,4 @@
 #SBATCH --mem=250G
 #SBATCH --partition=cpu
 
-python jULIE_recording_setting.py
+python jULIE_recording_setting.py $SLURM_ARRAY_TASK_ID
