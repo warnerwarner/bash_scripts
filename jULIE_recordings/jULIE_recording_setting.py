@@ -14,7 +14,7 @@ dirs = ["/home/camp/warnert/working/Recordings/2018_general/181205/2018-12-05_18
         "/home/camp/warnert/working/Recordings/2019_general/190801/2019-08-01_16-38-19"]
 chan_counts = [18, 18, 18, 18, 18, 32]
 
-tc = tr.Threshold_Recording(dirs[dir_index], channel_count=chan_counts[dir_index])
+tc = tr.Threshold_Recording(dirs[dir_index], channel_count=chan_counts[dir_index], dat_name='dat_for_jULIE_analysis.dat')
 
 bp_data = tc.set_threshold_crossings(return_bp=True, bp_indiv_chans=True)
 tc.set_all_tcs_amplitudes(bp_data=bp_data)
