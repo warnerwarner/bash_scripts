@@ -59,8 +59,8 @@ classifier_guesses = {}
 for i, j in tqdm(sss.split(window_unit_response, classifier.y_var)):
     X_train = window_unit_response[j]
     X_test = window_unit_response[i]
-    y_train = classifier.y_var[j]
-    y_test = classifier.y_var[i]
+    y_train = np.array(classifier.y_var)[j]
+    y_test = np.array(classifier.y_var)[i]
     svm = LinearSVC(C=1000)
     svm.fit(X_train, y_train)
 
