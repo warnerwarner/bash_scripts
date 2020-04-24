@@ -6,7 +6,7 @@
 #SBATCH --error=/home/camp/warnert/bash_scripts/jULIE_recordings/setting_%a.err
 #SBATCH --ntasks=1
 #SBATCH --time=24:00:00
-#SBATCH --mem=250G
-#SBATCH --partition=cpu
+#SBATCH --mem=500G
+#SBATCH --partition=hmem
 
 python NN_recording_setting.py $SLURM_ARRAY_TASK_ID
