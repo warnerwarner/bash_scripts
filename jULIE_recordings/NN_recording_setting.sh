@@ -2,8 +2,8 @@
 #
 #SBATCH --job-name=setting_NN
 #SBATCH --array=3,4
-#SBATCH --output=/home/camp/warnert/bash_scripts/jULIE_recordings/setting_%a.out
-#SBATCH --error=/home/camp/warnert/bash_scripts/jULIE_recordings/setting_%a.err
+#SBATCH --output=/home/camp/warnert/bash_scripts/jULIE_recordings/NNsetting_%a.out
+#SBATCH --error=/home/camp/warnert/bash_scripts/jULIE_recordings/NNsetting_%a.err
 #SBATCH --ntasks=1
 #SBATCH --time=24:00:00
 #SBATCH --mem=500G
