@@ -21,7 +21,7 @@ tc = tr.Threshold_Recording(dir, channel_count=18, dat_name='dat_for_jULIE_analy
 
 tc.set()
 
-slice_size = tc.rec_length()/total_slices
+slice_size = tc.rec_length/total_slices
 start_time = spike_slice*slice_size
 end_time = start_time+slice_size
 
