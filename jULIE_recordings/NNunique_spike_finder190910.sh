@@ -9,4 +9,4 @@
 #SBATCH --mem=100G
 #SBATCH --partition=cpu
 
-python NNunique_spike_finder190910.py $SLURM_ARRAY_TASK_ID
+python NNunique_spike_finder190910.py $SLURM_ARRAY_TASK_ID $SLURM_ARRAY_TASK_COUNT
