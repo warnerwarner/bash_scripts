@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #SBATCH --job-name=setting_jULIE
-#SBATCH --array=0-5
+#SBATCH --array=0, 2, 4, 5
 #SBATCH --output=/home/camp/warnert/bash_scripts/jULIE_recordings/setting_%a.out
 #SBATCH --error=/home/camp/warnert/bash_scripts/jULIE_recordings/setting_%a.err
 #SBATCH --ntasks=1
