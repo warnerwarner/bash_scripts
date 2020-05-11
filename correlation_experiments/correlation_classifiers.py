@@ -51,6 +51,7 @@ pcad_response, y_var = test_class.make_pcad_response(n_components, ['20Hz_cor_AB
 
 all_accs = []
 max_comps = []
+n_components = pcad_response.shape[-1]
 for k in range(n_components):
     accs = []
     for j in range(n_components-k):
