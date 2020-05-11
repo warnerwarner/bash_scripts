@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #SBATCH --job-name=PCA_classifing
-#SBATCH --array=0-11	## N_TASKS_TOTAL: SET THIS TO THE NUMBER OF INDEPENDENT JOBS,TYPICLLAY 100,SEE BELOW N_TASKS_TOTAL
+#SBATCH --array=1-599	## N_TASKS_TOTAL: SET THIS TO THE NUMBER OF INDEPENDENT JOBS,TYPICLLAY 100,SEE BELOW N_TASKS_TOTAL
 #SBATCH --output=/home/camp/warnert/bash_scripts/correlation_experiments/increasing_PCA_comps_basic_%a.out
 #SBATCH --error=/home/camp/warnert/bash_scripts/correlation_experiments/increasing_PCA_comps_basic_%a.err
 #SBATCH --ntasks=1
