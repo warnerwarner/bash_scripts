@@ -35,8 +35,11 @@ window_sizes = [None, 5, 10, 50, 100, 200]
 window_size = window_sizes[pcad_index % 6]
 if pcad_index > 5:
     baselined = True
+    output_txt_dir = os.path.join(out_dir, 'increasing_ordered_PCA_comps_ws_%s_baselined.txt' % str(window_size))
+
 else:
     baselined = False
+    output_txt_dir = os.path.join(out_dir, 'increasing_ordered_PCA_comps_ws_%s.txt' % str(window_size))
 
 
 test_class = cl.Classifier()
@@ -50,26 +53,28 @@ n_components = 599
 pcad_response, y_var = test_class.make_pcad_response(n_components, ['20Hz_cor_AB', '20Hz_acor_AB', '20Hz_acor_BA'],
                                                      reassign_y_var=[['20Hz_acor_AB', '20Hz_acor_BA']], window_size=window_size)
 
-all_accs = []
-max_comps = []
-n_components = pcad_response.shape[-1]
-for k in tqdm(range(n_components)):
-    accs = []
-    for j in range(n_components-k):
-        comp_accuracy = []
-        selected_comps = max_comps + [j]
-        for i in range(100):
-            test_class.pca_classifier(pcad_response[:, :, selected_comps], y_var)
-            comp_accuracy.append(test_class.find_accuracy())
-        accs.append(np.mean(comp_accuracy))
-    max_component = np.argmax(accs)
-    max_comps.append(max_component)
-    all_accs.append(np.max(accs))
+with open(output_txt_dir, 'a') as f:
+    all_accs = []
+    max_comps = []
+    n_components = pcad_response.shape[-1]
+    for k in tqdm(range(n_components)):
+        accs = []
+        for j in range(n_components-k):
+            comp_accuracy = []
+            selected_comps = max_comps + [j]
+            for i in range(100):
+                test_class.pca_classifier(pcad_response[:, :, selected_comps], y_var)
+                comp_accuracy.append(test_class.find_accuracy())
+            accs.append(np.mean(comp_accuracy))
+        max_component = np.argmax(accs)
+        max_comps.append(max_component)
+        f.write('Component:%d, accuracy:%f for %d itterations\n' % (max_component, np.max(accs), 100))
+        all_accs.append(np.max(accs))
 
 
 if baselined:
-    np.save(os.path.join(out_dir, '20Hz_increasing_component_accuracy_ws_%s_baselined.npy') % str(window_size), all_accs)
-    np.save(os.path.join(out_dir, '20Hz_increasing_component_components_ws_%s_baselined.npy') % str(window_size), max_comps)
+    np.save(os.path.join(out_dir, '20Hz_ordered_accuracy_ws_%s_baselined.npy') % str(window_size), all_accs)
+    np.save(os.path.join(out_dir, '20Hz_ordered_components_ws_%s_baselined.npy') % str(window_size), max_comps)
 else:
-    np.save(os.path.join(out_dir, '20Hz_increasing_component_accuracy_ws_%s.npy') % str(window_size), all_accs)
-    np.save(os.path.join(out_dir, '20Hz_increasing_component_ws_components.npy') % str(window_size), max_comps)
+    np.save(os.path.join(out_dir, '20Hz_ordered_accuracy_ws_%s.npy') % str(window_size), all_accs)
+    np.save(os.path.join(out_dir, '20Hz_ordered_ws_components.npy') % str(window_size), max_comps)
