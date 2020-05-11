@@ -9,6 +9,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import LinearSVC
 from sklearn.model_selection import train_test_split
 import os
+from tqdm import tqdm
 
 out_dir = '/home/camp/warnert/working/Recordings/Correlation_project_2019/Correlation_PCA_outputs/Increasing_components'
 trialbank_loc = '/home/camp/warnert/working/Recordings/trialbanks/190910SqPulseFreqCorrelationLongRandom.trialbank'
@@ -33,9 +34,9 @@ pcad_index = int(list(sys.argv)[1])
 window_sizes = [None, 5, 10, 50, 100, 200]
 window_size = window_sizes[pcad_index % 6]
 if pcad_index > 5:
-    baselined=True
+    baselined = True
 else:
-    baselined=False
+    baselined = False
 
 
 test_class = cl.Classifier()
@@ -52,7 +53,7 @@ pcad_response, y_var = test_class.make_pcad_response(n_components, ['20Hz_cor_AB
 all_accs = []
 max_comps = []
 n_components = pcad_response.shape[-1]
-for k in range(n_components):
+for k in tqdm(range(n_components)):
     accs = []
     for j in range(n_components-k):
         comp_accuracy = []
