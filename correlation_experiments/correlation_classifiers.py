@@ -57,7 +57,7 @@ for k in range(n_components):
         comp_accuracy = []
         selected_comps = max_comps + [j]
         for i in range(100):
-            test_class.pca_classifier(pcad_response[:, :, selected_comps, y_var])
+            test_class.pca_classifier(pcad_response[:, :, selected_comps], y_var)
             comp_accuracy.append(test_class.find_accuracy())
         accs.append(np.mean(comp_accuracy))
     max_component = np.argmax(accs)
