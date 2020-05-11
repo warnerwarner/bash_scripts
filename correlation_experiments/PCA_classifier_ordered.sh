@@ -9,4 +9,4 @@
 #SBATCH --mem=100G
 #SBATCH --partition=cpu
 
-python correlation_classifiers.py $SLURM_ARRAY_TASK_ID
+python PCA_classifier_ordered.py $SLURM_ARRAY_TASK_ID
