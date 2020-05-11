@@ -30,7 +30,7 @@ recordings = [rec1, rec2, rec3, rec4, rec5, rec6]
 
 pcad_index = int(list(sys.argv)[1])
 
-window_sizes = [None, 10, 50, 100, 200]
+window_sizes = [None, 5, 10, 50, 100, 200]
 window_size = window_sizes[pcad_index % 6]
 if pcad_index > 5:
     baselined=True
