@@ -66,10 +66,10 @@ out_txt.write('%d-%f-%f\n' % (comp_index[-1], accuracy, std))
 out_txt.close()
 out_txt = open(os.path.join(out_dir, 'accuracy_component_%d.txt' % len(comp_index)), 'r')
 out_lines = out_txt.readlines()
+out_txt.close()
 if len(out_lines) == n_components:
-    outputs = out_txt.readlines()
-    all_comps = [int(i.split('-')[0]) for i in outputs]
-    all_accs = [float(i.split('-')[1]) for i in outputs]
+    all_comps = [int(i.split('-')[0]) for i in out_lines]
+    all_accs = [float(i.split('-')[1]) for i in out_lines]
     max_comp_index = np.argmax(all_accs)
     max_comp = all_comps[max_comp_index]
     new_comp_index = comp_index[:-1].append(max_comp)
@@ -84,5 +84,6 @@ if len(out_lines) == n_components:
                 temp_bash_out = open(temp_bash_dir, 'w')
                 temp_bash_out.write(temp_bash)
                 temp_bash_out.close()
+                bash_temp.close()
                 bash_command = 'sbatch %s' % temp_bash_dir
                 process = subprocess.Popen(bash_command.split())
