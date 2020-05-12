@@ -69,7 +69,7 @@ out_txt.close()
 out_txt = open(os.path.join(out_dir, 'accuracy_component_%d.txt' % len(comp_index)), 'r')
 out_lines = out_txt.readlines()
 out_txt.close()
-if len(out_lines) == n_components:
+if len(out_lines) == n_components + 1 - len(comp_index):
     all_comps = [int(i.split('-')[0]) for i in out_lines]
     all_accs = [float(i.split('-')[1]) for i in out_lines]
     max_comp_index = np.argmax(all_accs)
