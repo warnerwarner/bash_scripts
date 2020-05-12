@@ -43,7 +43,7 @@ test_class.pre_trial_window = 2
 test_class.post_trial_window = 2
 
 # test_class.make_unit_response(['20Hz_cor_AB', '20Hz_acor_BA', '20Hz_acor_AB'], baseline=baselined)
-test_class.test_size = 0.2
+test_class.test_size = 1
 n_components = 599
 if os.path.isfile(os.path.join(temp_dir, 'PCA.npy')):
     pcad_response = np.load(os.path.join(temp_dir, 'PCA.npy'))
@@ -56,7 +56,7 @@ else:
 
 
 accs = []
-for i in tqdm(range(100)):
+for i in tqdm(range(1000)):
     test_class.pca_classifier(pcad_response[:, :, comp_index], y_var)
     accs.append(test_class.find_accuracy())
 accuracy = np.mean(accs)
