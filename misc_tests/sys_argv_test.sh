@@ -8,4 +8,4 @@
 #SBATCH --mem=1G
 #SBATCH --partition=cpu
 
-python sys_arv_test.py 1 2 3 4 5 6 7 8 9 10 
+python sys_argv_test.py 1 2 3 4 5 6 7 8 9 10 
