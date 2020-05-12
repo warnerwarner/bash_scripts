@@ -8,4 +8,4 @@
 #SBATCH --mem=100G
 #SBATCH --partition=cpu
 
-python PCA_classifier_increasing_comps.py %s
+python PCA_classifier_increasing_comps.py $s
