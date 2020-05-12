@@ -78,7 +78,8 @@ if len(out_lines) == n_components:
     if len(comp_index) != n_components:
         for i in range(n_components):
             if i not in new_comp_index:
-                temp_comps = new_comp_index.append(i)
+                temp_comps = new_comp_index
+                temp_comps.append(i)
                 temp_comps_str = ''
                 for j in temp_comps:
                     temp_comps_str+=str(j)+' '
