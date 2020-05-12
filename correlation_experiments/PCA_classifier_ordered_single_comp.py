@@ -72,7 +72,8 @@ if len(out_lines) == n_components:
     all_accs = [float(i.split('-')[1]) for i in out_lines]
     max_comp_index = np.argmax(all_accs)
     max_comp = all_comps[max_comp_index]
-    new_comp_index = comp_index[:-1].append(max_comp)
+    new_comp_index = comp_index[:-1]
+    new_comp_index.append(max_comp)
     if len(comp_index) != n_components:
         for i in range(n_components):
             if i not in new_comp_index:
