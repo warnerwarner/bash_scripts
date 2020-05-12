@@ -50,7 +50,7 @@ if os.path.isfile(os.path.join(temp_dir, 'PCA.npy')):
     y_var = np.load(os.path.join(temp_dir, 'y_var.npy'))
 else:
     pcad_response, y_var = test_class.make_pcad_response(n_components, ['20Hz_cor_AB', '20Hz_acor_AB', '20Hz_acor_BA'],
-                                                         reassign_y_var=[['20Hz_acor_AB', '20Hz_acor_BA']], window_size=None, baselined=True)
+                                                         reassign_y_var=[['20Hz_acor_AB', '20Hz_acor_BA']], window_size=None, baseline=True)
     np.save(os.path.join(temp_dir, 'PCA.npy'), pcad_response)
     np.save(os.path.join(temp_dir, 'y_var.npy'), y_var)
 
