@@ -28,9 +28,8 @@ rec3.set()
 rec4.set()
 rec5.set()
 rec6.set()
-
 temp_dir = os.path.join(out_dir, 'temp')
-if not os.isdir(temp_dir):
+if not os.path.isdir(temp_dir):
     os.mkdir(temp_dir)
 recordings = [rec1, rec2, rec3, rec4, rec5, rec6]
 
