@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 #SBATCH --job-name=PCA_classifing
-#SBATCH --output=/home/camp/warnert/bash_scripts/misc_test/sys_arv.out
-#SBATCH --error=/home/camp/warnert/bash_scripts/misc_test/sys_arv.err
+#SBATCH --output=/home/camp/warnert/bash_scripts/misc_tests/sys_arv.out
+#SBATCH --error=/home/camp/warnert/bash_scripts/misc_tests/sys_arv.err
 #SBATCH --ntasks=1
 #SBATCH --time=24:00:00
 #SBATCH --mem=1G
