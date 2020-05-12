@@ -12,6 +12,7 @@ import os
 from tqdm import tqdm
 import subprocess
 import time
+from copy import deepcopy
 
 out_dir = '/home/camp/warnert/working/Recordings/Correlation_project_2019/Correlation_PCA_outputs/Increasing_components'
 trialbank_loc = '/home/camp/warnert/working/Recordings/trialbanks/190910SqPulseFreqCorrelationLongRandom.trialbank'
@@ -78,7 +79,7 @@ if len(out_lines) == n_components:
     if len(comp_index) != n_components:
         for i in range(n_components):
             if i not in new_comp_index:
-                temp_comps = new_comp_index
+                temp_comps = deepcopy(new_comp_index)
                 temp_comps.append(i)
                 temp_comps_str = ''
                 for j in temp_comps:
@@ -86,7 +87,7 @@ if len(out_lines) == n_components:
                 bash_temp = open(bash_temp_dir, 'r')
                 src = Template(bash_temp.read())
                 print(temp_comps_str)
-                time.sleep(60)
+                #time.sleep(60)
                 temp_bash = src.substitute({'pca_components': temp_comps_str})
                 temp_bash_dir = os.path.join(temp_dir, 'PCA_temp_bash_%d.sh' % i)
                 temp_bash_out = open(temp_bash_dir, 'w')
