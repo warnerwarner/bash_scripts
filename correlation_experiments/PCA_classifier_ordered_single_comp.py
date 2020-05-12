@@ -65,8 +65,8 @@ out_txt = open(os.path.join(out_dir, 'accuracy_component_%d.txt' % len(comp_inde
 out_txt.write('%d-%f-%f\n' % (comp_index[-1], accuracy, std))
 out_txt.close()
 out_txt = open(os.path.join(out_dir, 'accuracy_component_%d.txt' % len(comp_index)), 'r')
-
-if len(out_txt.readlines() == n_components):
+out_lines = out_txt.readlines()
+if len(out_lines == n_components):
     outputs = out_txt.readlines()
     all_comps = [int(i.split('-')[0]) for i in outputs]
     all_accs = [float(i.split('-')[1]) for i in outputs]
