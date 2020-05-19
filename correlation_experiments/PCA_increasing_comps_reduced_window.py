@@ -39,19 +39,27 @@ test_class.recordings = recordings
 test_class.pre_trial_window = 2
 test_class.post_trial_window = 2
 test_class.test_size = 1
-n_components = 599
+n_components = 399
+
 
 
 all_accs = []
+baselined=False
+test_class.make_unit_response(['20Hz_cor_AB', '20Hz_acor_AB', '20Hz_acor_BA'], baselined=baselined)
+reduced_unit_response = [i[:, :, 200:] for i in test_class.unit_response]
+test_class.unit_response = reduced_unit_response
+
 
 for pcad_index in range(12):
     window_size = window_sizes[pcad_index % 6]
     if pcad_index > 5:
-        baselined = False
-    else:
         baselined = True
+        test_class.make_unit_response(['20Hz_cor_AB', '20Hz_acor_AB', '20Hz_acor_BA'], baselined=baselined)
+        reduced_unit_response = [i[:, :, 200:] for i in test_class.unit_response]
+        test_class.unit_response = reduced_unit_response
+
     pcad_response, y_var = test_class.make_pcad_response(n_components, ['20Hz_cor_AB', '20Hz_acor_AB', '20Hz_acor_BA'],
-                                                         reassign_y_var=[['20Hz_acor_AB', '20Hz_acor_BA']], window_size=window_size, baseline=baslined)
+                                                         reassign_y_var=[['20Hz_acor_AB', '20Hz_acor_BA']], window_size=window_size, baseline=baselined)
     n_components = pcad_response.shape[-1]
     index_accuracy = []
     for i in range(1000):
@@ -60,7 +68,5 @@ for pcad_index in range(12):
     all_accs.append(index_accuracy)
 
 
-if baselined:
-    np.save(os.path.join(out_dir, '20Hz_ws_%s_n_comps_%d_baselined.npy') % (str(window_size), n_components_sub), all_accs)
-else:
-    np.save(os.path.join(out_dir, '20Hz_ws_%s_n_comps_%d.npy') % (str(window_size), n_components_sub), all_accs)
+
+np.save(os.path.join(out_dir, '20Hz_4s_n_comps_%d_all_ws_baselined.npy') % (str(window_size), n_components_sub), all_accs)

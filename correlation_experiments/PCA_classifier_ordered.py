@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import sys
 sys.path.append('/home/camp/warnert/neurolytics')
 import classifier as cl
@@ -50,6 +49,7 @@ test_class.make_unit_response(['20Hz_cor_AB', '20Hz_acor_BA', '20Hz_acor_AB'], b
 test_class.test_size = 0.2
 n_components = 599
 
+
 pcad_response, y_var = test_class.make_pcad_response(n_components, ['20Hz_cor_AB', '20Hz_acor_AB', '20Hz_acor_BA'],
                                                      reassign_y_var=[['20Hz_acor_AB', '20Hz_acor_BA']], window_size=window_size)
 
@@ -68,7 +68,9 @@ with open(output_txt_dir, 'a') as f:
             accs.append(np.mean(comp_accuracy))
         max_component = np.argmax(accs)
         max_comps.append(max_component)
+        f = open(output_txt_dir, 'a')
         f.write('Component:%d, accuracy:%f for %d itterations\n' % (max_component, np.max(accs), 100))
+        f.close()
         all_accs.append(np.max(accs))
 
 
