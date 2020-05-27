@@ -45,7 +45,7 @@ all_accs_02 = []
 for sub_units in range(1, 98):
     sub_acc = []
     for i in range(repeats):
-        classifier.window_classifier(['20Hz_cor_AB', '20Hz_acor_AB'], 0, 0.5, shuffle=False, sub_units=sub_units)
+        classifier.window_classifier(['20Hz_cor_AB', '20Hz_acor_AB'], 0, 0.5, shuffle=True, sub_units=sub_units)
         sub_acc.append(classifier.find_accuracy())
     all_accs_02.append(sub_acc)
 
@@ -54,11 +54,11 @@ all_accs_1 = []
 for sub_units in range(1, 98):
     sub_acc = []
     for i in range(repeats):
-        classifier.window_classifier(['20Hz_cor_AB', '20Hz_acor_AB'], 0, 0.5, shuffle=False, sub_units=sub_units)
+        classifier.window_classifier(['20Hz_cor_AB', '20Hz_acor_AB'], 0, 0.5, shuffle=True, sub_units=sub_units)
         sub_acc.append(classifier.find_accuracy())
     all_accs_1.append(sub_acc)
 
 all_accs = [all_accs_02, all_accs_1]
 
-np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/window_classifier_outputs/increasing_units_500ms_noBL.npy', all_accs)
+np.save('/home/camp/warnert/working/Recordings/Correlation_project_2019/window_classifier_outputs/increasing_units_500ms_noBL_shuf.npy', all_accs)
 

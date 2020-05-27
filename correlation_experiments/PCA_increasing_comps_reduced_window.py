@@ -1,3 +1,7 @@
+'''
+Unfinished
+'''
+
 import numpy as np
 import matplotlib.pyplot as plt
 import sys
@@ -46,20 +50,15 @@ n_components = 399
 all_accs = []
 baselined=False
 test_class.make_unit_response(['20Hz_cor_AB', '20Hz_acor_AB', '20Hz_acor_BA'], baselined=baselined)
+pcad_response, y_var = test_class.make_pcad_response(n_components, ['20Hz_cor_AB', '20Hz_acor_AB', '20Hz_acor_BA'],
+                                                         reassign_y_var=[['20Hz_acor_AB', '20Hz_acor_BA']], window_size=window_size, baseline=baselined)
+
 reduced_unit_response = [i[:, :, 200:] for i in test_class.unit_response]
 test_class.unit_response = reduced_unit_response
 
 
-for pcad_index in range(12):
-    window_size = window_sizes[pcad_index % 6]
-    if pcad_index > 5:
-        baselined = True
-        test_class.make_unit_response(['20Hz_cor_AB', '20Hz_acor_AB', '20Hz_acor_BA'], baselined=baselined)
-        reduced_unit_response = [i[:, :, 200:] for i in test_class.unit_response]
-        test_class.unit_response = reduced_unit_response
-
-    pcad_response, y_var = test_class.make_pcad_response(n_components, ['20Hz_cor_AB', '20Hz_acor_AB', '20Hz_acor_BA'],
-                                                         reassign_y_var=[['20Hz_acor_AB', '20Hz_acor_BA']], window_size=window_size, baseline=baselined)
+for pcad_index in range(6):
+    window_size = window_sizes[pcad_index]
     n_components = pcad_response.shape[-1]
     index_accuracy = []
     for i in range(1000):
@@ -69,4 +68,4 @@ for pcad_index in range(12):
 
 
 
-np.save(os.path.join(out_dir, '20Hz_4s_n_comps_%d_all_ws_baselined.npy') % (str(window_size), n_components_sub), all_accs)
+np.save(os.path.join(out_dir, '20Hz_4s_n_comps_%d_all_ws_baselined.npy') % n_components_sub, all_accs)
